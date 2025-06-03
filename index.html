@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ankush Desai - Robotics Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        body {
+            background: linear-gradient(135deg, #1a1a1a 0%, #1a3c4d 100%);
+            color: #fff;
+            min-height: 100vh;
+        }
+        .container {
+            background: #2a2a2a;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 1200px;
+            margin: 1em auto;
+            padding: 1em;
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1em 2em;
+        }
+        .logo {
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+        nav a {
+            color: #00ddeb;
+            text-decoration: none;
+            margin: 0 1em;
+            font-size: 0.9em;
+            text-transform: uppercase;
+        }
+        nav a:hover {
+            color: #fff;
+        }
+        .hero {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 3em;
+            gap: 2em;
+        }
+        .hero-content {
+            max-width: 50%;
+        }
+        .hero-content h2 {
+            font-size: 1.5em;
+            color: #00ddeb;
+            margin-bottom: 0.5em;
+        }
+        .hero-content h1 {
+            font-size: 3em;
+            margin-bottom: 0.3em;
+        }
+        .hero-content h3 {
+            font-size: 1.5em;
+            color: #00ddeb;
+            margin-bottom: 1em;
+        }
+        .hero-content p {
+            color: #ccc;
+            line-height: 1.6;
+            margin-bottom: 1.5em;
+        }
+        .social-links {
+            display: flex;
+            gap: 1em;
+            margin-bottom: 1.5em;
+        }
+        .social-links a {
+            color: #00ddeb;
+            font-size: 1.5em;
+            text-decoration: none;
+        }
+        .social-links a:hover {
+            color: #fff;
+        }
+        .cv-button {
+            background: transparent;
+            border: 2px solid #00ddeb;
+            color: #00ddeb;
+            padding: 0.8em 1.5em;
+            font-size: 1em;
+            cursor: pointer;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+        }
+        .cv-button:hover {
+            background: #00ddeb;
+            color: #1a1a1a;
+        }
+        .hero-image {
+            position: relative;
+            width: 300px;
+            height: 300px;
+        }
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+        }
+        .hero-image::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            background: linear-gradient(45deg, #00ddeb, #1a3c4d);
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+            z-index: -1;
+            filter: blur(15px);
+        }
+        section {
+            padding: 2em 3em;
+        }
+        section h2 {
+            color: #00ddeb;
+            font-size: 1.8em;
+            margin-bottom: 1em;
+        }
+        section p, section li {
+            color: #ccc;
+            line-height: 1.6;
+            margin-bottom: 0.5em;
+        }
+        ul {
+            list-style-type: disc;
+            margin-left: 1.5em;
+        }
+        .experience, .project {
+            margin-bottom: 1.5em;
+        }
+        .contact-links a {
+            color: #00ddeb;
+            text-decoration: none;
+        }
+        .contact-links a:hover {
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav>
+            <div class="logo">Portfolio</div>
+            <div class="nav-links">
+                <a href="#home">Home</a>
+                <a href="#education">Education</a>
+                <a href="#experience">Experience</a>
+                <a href="#projects">Projects</a>
+                <a href="#skills">Skills</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </nav>
+        <section class="hero" id="home">
+            <div class="hero-content">
+                <h2>Hey there, It's Me</h2>
+                <h1>Ankush Desai</h1>
+                <h3>And I'm a Robotics Engineer</h3>
+                <p>Master's student in Robotics Technology at the University of Minnesota with expertise in ROS, Python, Computer Vision, and Reinforcement Learning. Achieved All India Rank 3 in ABU Robocon 2022. Passionate about robotic manipulation and autonomous navigation.</p>
+                
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/ankush-desai-799a43214/" target="_blank">in</a>
+                    <a href="https://github.com/Ankush0903" target="_blank">
+                        <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub" style="width: 24px; height: 24px; filter: invert(1) hue-rotate(180deg) saturate(5);">
+                    </a>
+                </div>
+        
+                <a href="Ankush_Satish_Desai_Resume_V3.pdf" download>
+                    <button class="cv-button">Download CV</button>
+                </a>
+            </div>
+            <div class="hero-image">
+                <img src="Ankush Desai_Profile.png" alt="Ankush Desai Profile Picture">
+            </div>
+            
+        </section>
+        <section id="education">
+            <h2>Education</h2>
+            <div class="experience">
+                <h3>University of Minnesota (Sept. 2024 - May 2026) </h3>
+                <p>Master of Science in Robotics Technology, GPA: 3.8/4.0</p>
+                <p>Relevant Coursework: Robotics, Computer Vision, Machine Learning, Robot Vision, Linear Control Systems, Deep Learning, Optimal Estimation, Nonlinear Optimization with ML & AI</p>
+            </div>
+            <div class="experience">
+                <h3>Pune University (Aug. 2019 - July 2023) </h3>
+                <p>Bachelor of Engineering in Mechanical Engineering, GPA: 3.4/4.0</p>
+                <p>Relevant Coursework: CAD, Fluid Dynamics, Theory of Machines, Mechanical Design, Strength of Machinery, Thermodynamics</p>
+            </div>
+        </section>
+        <section id="experience">
+            <h2>Experience</h2>
+            <div class="experience">
+                <h3>FAB Electronic Engineers | Automation Engineer Intern (Jul. 2023 - Jul. 2024) </h3>
+                <ul>
+                    <li>Developed an autonomous guided robot using ROS, reducing paperwork delivery time by 90% with 92% accuracy and 98% efficiency.</li>
+                    <li>Designed a floor-cleaning robot, cutting cleaning time by 50% through efficient control and user-friendly design.</li>
+                    <li>Programmed a UR5 robot in RoboDK using Python API for precise joint and Cartesian movements.</li>
+                </ul>
+            </div>
+            <div class="experience">
+                <h3>Team Automatons | Team Lead (Jun. 2022 - Jun. 2023) </h3>
+                <ul>
+                    <li>Led design and testing of two rugby-playing robots for ABU Robocon 2020, achieving 95% precision in control.</li>
+                    <li>Implemented a CNN-based system for EEG-based robotic arm control with 92% classification accuracy.</li>
+                    <li>Developed a PyTorch and computer vision system for 3D object localization, improving inventory tracking by 40%.</li>
+                </ul>
+            </div>
+        </section>
+        <section id="projects">
+            <h2>Projects</h2>
+            <div class="project">
+                <h3>Indoor Mapping Using Semantic 3D SLAM in ROS</h3>
+                <p>Developed a semantic 3D SLAM algorithm for TurtleBot 3, achieving 95% accuracy in 3D mapping and localization in GPS-denied environments. Validated in NVIDIA Isaac Sim with 70% improved navigation efficiency.</p>
+            </div>
+            <div class="project">
+                <h3>Reinforcement Learning-based Robotic Manipulation</h3>
+                <p>Advanced a robotic pick-and-place system using NVIDIA Isaac Sim and PPO, reducing task completion time by 30% and collision errors by 25%. Used Koopman-based linear model for 40% smoother motions.</p>
+            </div>
+            <div class="project">
+                <h3>Robotic Pick and Place using a Cobot</h3>
+                <p>Executed precise gripping tasks with a UR5 robot and Robotiq gripper, leveraging pose estimation for adaptive pick-and-place operations.</p>
+            </div>
+            <div class="project">
+                <h3>Autonomous Tool Sorting using Computer Vision</h3>
+                <p>Built a Python script with TensorFlow, Keras, and OpenCV for UR5 tool sorting using ArUco markers, achieving 95% placement accuracy.</p>
+            </div>
+        </section>
+        <section id="skills">
+            <h2>Skills</h2>
+            <ul>
+                <li>Programming: Python, PyTorch, C, C++, TensorFlow, MATLAB, ROS, Docker</li>
+                <li>Robotics: Computer Vision, Machine Learning, Deep Learning, Reinforcement Learning, SLAM, Path Planning, Linear Feedback Control</li>
+                <li>Design: SolidWorks, Fusion 360, Catia, AutoCAD, ANSYS, Shapr 3D, Rapid Prototyping</li>
+                <li>Electronics: Electrical Schematics, Electronic Debugging, Sensor Integration</li>
+            </ul>
+        </section>
+        <section id="contact">
+            <h2>Contact</h2>
+            <p class="contact-links">Email: <a href="mailto:desai211@umn.edu">desai211@umn.edu</a></p>
+            <p class="contact-links">LinkedIn: <a href="https://www.linkedin.com/in/ankush-desai-799a43214/" target="_blank">LinkedIn Profile</a></p>
+            <p>Phone: +1(763)900-5084</p>
+        </section>
+    </div>
+</body>
+</html>
