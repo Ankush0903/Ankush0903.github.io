@@ -5,158 +5,226 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ankush Desai - Robotics Portfolio</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Share+Tech+Mono&display=swap');
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: Arial, sans-serif;
+            font-family: 'Share Tech Mono', 'Orbitron', Arial, sans-serif;
         }
         body {
-            background: linear-gradient(135deg, #1a1a1a 0%, #1a3c4d 100%);
+            background: linear-gradient(120deg, #0f2027 0%, #2c5364 100%);
             color: #fff;
             min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
         }
         .container {
-            background: #2a2a2a;
-            border-radius: 20px;
-            width: 90%;
-            max-width: 1200px;
-            margin: 1em auto;
-            padding: 1em;
+            background: rgba(20, 20, 40, 0.95);
+            border-radius: 24px;
+            width: 92%;
+            max-width: 1250px;
+            margin: 2em auto;
+            padding: 2em 2em 2em 2em;
+            box-shadow: 0 0 40px #00fff7, 0 0 10px #ff00cc inset;
         }
         nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1em 2em;
+            padding: 1.5em 2em;
+            background: linear-gradient(90deg, #232526 0%, #414345 100%);
+            border-radius: 16px;
+            box-shadow: 0 0 12px #00fff7;
         }
         .logo {
-            font-size: 1.5em;
-            font-weight: bold;
+            font-size: 2em;
+            font-family: 'Orbitron', Arial, sans-serif;
+            color: #ff00cc;
+            letter-spacing: 2px;
+            text-shadow: 0 0 8px #00fff7, 0 0 2px #ff00cc;
         }
-        nav a {
-            color: #00ddeb;
+        .nav-links a {
+            color: #00fff7;
             text-decoration: none;
-            margin: 0 1em;
-            font-size: 0.9em;
+            margin: 0 1.2em;
+            font-size: 1em;
             text-transform: uppercase;
+            font-family: 'Orbitron', Arial, sans-serif;
+            letter-spacing: 1px;
+            transition: color 0.2s, text-shadow 0.2s;
+            text-shadow: 0 0 6px #ff00cc;
         }
-        nav a:hover {
-            color: #fff;
+        .nav-links a:hover {
+            color: #ff00cc;
+            text-shadow: 0 0 12px #00fff7, 0 0 4px #ff00cc;
         }
         .hero {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 3em;
+            padding: 3em 0;
             gap: 2em;
         }
         .hero-content {
-            max-width: 50%;
+            max-width: 55%;
         }
         .hero-content h2 {
             font-size: 1.5em;
-            color: #00ddeb;
+            color: #ff00cc;
             margin-bottom: 0.5em;
+            font-family: 'Orbitron', Arial, sans-serif;
+            text-shadow: 0 0 8px #00fff7;
         }
         .hero-content h1 {
-            font-size: 3em;
+            font-size: 3.2em;
             margin-bottom: 0.3em;
+            color: #00fff7;
+            font-family: 'Orbitron', Arial, sans-serif;
+            text-shadow: 0 0 16px #ff00cc;
         }
         .hero-content h3 {
             font-size: 1.5em;
-            color: #00ddeb;
+            color: #ff00cc;
             margin-bottom: 1em;
+            font-family: 'Orbitron', Arial, sans-serif;
+            text-shadow: 0 0 8px #00fff7;
         }
         .hero-content p {
-            color: #ccc;
-            line-height: 1.6;
+            color: #b2f7ef;
+            line-height: 1.7;
             margin-bottom: 1.5em;
+            font-size: 1.1em;
+            text-shadow: 0 0 4px #00fff7;
         }
         .social-links {
             display: flex;
-            gap: 1em;
+            gap: 1.2em;
             margin-bottom: 1.5em;
         }
         .social-links a {
-            color: #00ddeb;
-            font-size: 1.5em;
+            color: #00fff7;
+            font-size: 1.7em;
             text-decoration: none;
+            transition: color 0.2s, text-shadow 0.2s;
+            text-shadow: 0 0 8px #ff00cc;
         }
         .social-links a:hover {
-            color: #fff;
+            color: #ff00cc;
+            text-shadow: 0 0 12px #00fff7, 0 0 4px #ff00cc;
         }
         .cv-button {
-            background: transparent;
-            border: 2px solid #00ddeb;
-            color: #00ddeb;
-            padding: 0.8em 1.5em;
-            font-size: 1em;
+            background: linear-gradient(90deg, #00fff7 0%, #ff00cc 100%);
+            border: none;
+            color: #232526;
+            padding: 0.8em 2em;
+            font-size: 1.1em;
             cursor: pointer;
             border-radius: 50px;
-            transition: all 0.3s ease;
+            font-family: 'Orbitron', Arial, sans-serif;
+            font-weight: bold;
+            box-shadow: 0 0 12px #00fff7, 0 0 4px #ff00cc;
+            transition: background 0.3s, color 0.3s;
         }
         .cv-button:hover {
-            background: #00ddeb;
-            color: #1a1a1a;
+            background: linear-gradient(90deg, #ff00cc 0%, #00fff7 100%);
+            color: #fff;
         }
         .hero-image {
             position: relative;
-            width: 300px;
-            height: 300px;
+            width: 320px;
+            height: 320px;
+            border-radius: 50%;
+            box-shadow: 0 0 32px #ff00cc, 0 0 16px #00fff7 inset;
+            background: linear-gradient(135deg, #232526 0%, #414345 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         .hero-image img {
-            width: 100%;
-            height: 100%;
+            width: 95%;
+            height: 95%;
             object-fit: cover;
-            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+            border-radius: 50%;
+            box-shadow: 0 0 24px #00fff7, 0 0 8px #ff00cc inset;
         }
         .hero-image::before {
             content: '';
             position: absolute;
-            top: -10px;
-            left: -10px;
-            right: -10px;
-            bottom: -10px;
-            background: linear-gradient(45deg, #00ddeb, #1a3c4d);
-            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+            top: -16px;
+            left: -16px;
+            right: -16px;
+            bottom: -16px;
+            background: linear-gradient(45deg, #ff00cc, #00fff7);
+            border-radius: 50%;
             z-index: -1;
-            filter: blur(15px);
+            filter: blur(24px);
         }
         section {
-            padding: 2em 3em;
+            padding: 2.5em 3em;
+            border-radius: 16px;
+            margin-bottom: 2em;
+            background: rgba(30, 30, 60, 0.85);
+            box-shadow: 0 0 24px #00fff7, 0 0 8px #ff00cc inset;
         }
         section h2 {
-            color: #00ddeb;
-            font-size: 1.8em;
+            color: #ff00cc;
+            font-size: 2em;
             margin-bottom: 1em;
+            font-family: 'Orbitron', Arial, sans-serif;
+            text-shadow: 0 0 8px #00fff7;
         }
         section p, section li {
-            color: #ccc;
-            line-height: 1.6;
+            color: #b2f7ef;
+            line-height: 1.7;
             margin-bottom: 0.5em;
+            font-size: 1.08em;
+            text-shadow: 0 0 4px #00fff7;
         }
         ul {
-            list-style-type: disc;
-            margin-left: 1.5em;
+            list-style-type: square;
+            margin-left: 2em;
         }
         .experience, .project {
             margin-bottom: 1.5em;
         }
         .contact-links a {
-            color: #00ddeb;
+            color: #00fff7;
             text-decoration: none;
+            font-family: 'Orbitron', Arial, sans-serif;
+            text-shadow: 0 0 8px #ff00cc;
         }
         .contact-links a:hover {
-            color: #fff;
+            color: #ff00cc;
+            text-shadow: 0 0 12px #00fff7, 0 0 4px #ff00cc;
         }
         .view-project {
-            color: #00ddeb;
+            color: #ff00cc;
             text-decoration: none;
             font-weight: bold;
+            font-family: 'Orbitron', Arial, sans-serif;
+            text-shadow: 0 0 8px #00fff7;
+            transition: color 0.2s, text-shadow 0.2s;
         }
         .view-project:hover {
-            color: #ff8c66;
+            color: #00fff7;
+            text-shadow: 0 0 12px #ff00cc, 0 0 4px #00fff7;
+        }
+        @media (max-width: 900px) {
+            .hero {
+                flex-direction: column;
+                padding: 2em 0;
+            }
+            .hero-content {
+                max-width: 100%;
+            }
+            .hero-image {
+                width: 220px;
+                height: 220px;
+            }
+            section {
+                padding: 1.2em 1em;
+            }
         }
     </style>
 </head>
