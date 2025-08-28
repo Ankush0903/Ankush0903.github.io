@@ -3,39 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ankush Desai - Robotics Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <title>Ankush Desai - Futuristic Portfolio</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@400;500&display=swap');
         body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', Arial, sans-serif;
             background: linear-gradient(120deg, #e0eafc 0%, #cfdef3 100%);
             min-height: 100vh;
-            font-family: 'Roboto', Arial, sans-serif;
-            color: #222;
+            overflow-x: hidden;
+        }
+        #bg3d {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100vw; height: 100vh;
+            z-index: 0;
         }
         .container {
-            max-width: 1100px;
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
             margin: 2em auto;
             padding: 2em;
-            border-radius: 32px;
-            background: rgba(255,255,255,0.6);
-            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-            backdrop-filter: blur(8px);
-            border: 1px solid rgba(255,255,255,0.18);
         }
         nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            background: rgba(255,255,255,0.7);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+            padding: 1em 2em;
             margin-bottom: 2em;
         }
         .logo {
             font-family: 'Montserrat', Arial, sans-serif;
             font-size: 2em;
-            color: #3a86ff;
+            color: #2b5876;
             letter-spacing: 2px;
         }
         .nav-links a {
-            color: #3a86ff;
+            color: #2b5876;
             text-decoration: none;
             margin: 0 1em;
             font-weight: 500;
@@ -43,104 +52,29 @@
             transition: color 0.2s;
         }
         .nav-links a:hover {
-            color: #ffbe0b;
-        }
-        .hero {
-            display: flex;
-            align-items: center;
-            gap: 2em;
-            margin-bottom: 2em;
-        }
-        .hero-content {
-            flex: 1;
-        }
-        .hero-content h2 {
-            font-size: 1.2em;
-            color: #ffbe0b;
-            margin-bottom: 0.5em;
-        }
-        .hero-content h1 {
-            font-size: 2.8em;
-            color: #3a86ff;
-            margin-bottom: 0.3em;
-            font-family: 'Montserrat', Arial, sans-serif;
-        }
-        .hero-content h3 {
-            font-size: 1.3em;
-            color: #8338ec;
-            margin-bottom: 1em;
-        }
-        .hero-content p {
-            color: #222;
-            line-height: 1.7;
-            margin-bottom: 1.5em;
-            font-size: 1.1em;
-        }
-        .social-links {
-            display: flex;
-            gap: 1em;
-            margin-bottom: 1.5em;
-        }
-        .social-links a {
-            color: #3a86ff;
-            font-size: 1.5em;
-            text-decoration: none;
-            transition: color 0.2s;
-        }
-        .social-links a:hover {
-            color: #ffbe0b;
-        }
-        .resume-button {
-            background: linear-gradient(90deg, #3a86ff 0%, #ffbe0b 100%);
-            border: none;
-            color: #fff;
-            padding: 0.8em 2em;
-            font-size: 1.1em;
-            cursor: pointer;
-            border-radius: 50px;
-            font-family: 'Montserrat', Arial, sans-serif;
-            font-weight: bold;
-            box-shadow: 0 0 12px #3a86ff44;
-            transition: background 0.3s, color 0.3s;
-        }
-        .resume-button:hover {
-            background: linear-gradient(90deg, #ffbe0b 0%, #3a86ff 100%);
-            color: #222;
-        }
-        .hero-image {
-            width: 220px;
-            height: 220px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #3a86ff 0%, #ffbe0b 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 0 32px #3a86ff44;
-        }
-        .hero-image img {
-            width: 90%;
-            height: 90%;
-            object-fit: cover;
-            border-radius: 50%;
-            box-shadow: 0 0 16px #ffbe0b44;
+            color: #4e4376;
         }
         section {
-            margin-bottom: 2em;
-            padding: 2em;
+            background: rgba(255,255,255,0.6);
             border-radius: 24px;
-            background: rgba(255,255,255,0.7);
-            box-shadow: 0 4px 16px #3a86ff22;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+            margin-bottom: 2em;
+            padding: 2em 3em;
+            backdrop-filter: blur(8px);
+            transition: box-shadow 0.3s;
+        }
+        section:hover {
+            box-shadow: 0 16px 48px 0 rgba(31, 38, 135, 0.25);
         }
         section h2 {
-            color: #8338ec;
-            font-size: 1.7em;
-            margin-bottom: 1em;
             font-family: 'Montserrat', Arial, sans-serif;
+            color: #2b5876;
+            font-size: 2em;
+            margin-bottom: 1em;
         }
         section p, section li {
             color: #222;
             line-height: 1.7;
-            margin-bottom: 0.5em;
             font-size: 1.08em;
         }
         ul {
@@ -151,41 +85,129 @@
             margin-bottom: 1.5em;
         }
         .contact-links a {
-            color: #3a86ff;
+            color: #2b5876;
             text-decoration: none;
             font-weight: 500;
         }
         .contact-links a:hover {
-            color: #ffbe0b;
+            color: #4e4376;
         }
         .view-project {
-            color: #ffbe0b;
+            color: #4e4376;
             text-decoration: none;
             font-weight: bold;
-            font-family: 'Montserrat', Arial, sans-serif;
-            transition: color 0.2s;
         }
         .view-project:hover {
-            color: #3a86ff;
+            color: #2b5876;
+        }
+        .hero {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 2em;
+            margin-bottom: 2em;
+        }
+        .hero-content {
+            max-width: 55%;
+        }
+        .hero-content h2 {
+            font-size: 1.5em;
+            color: #4e4376;
+            margin-bottom: 0.5em;
+            font-family: 'Montserrat', Arial, sans-serif;
+        }
+        .hero-content h1 {
+            font-size: 3em;
+            margin-bottom: 0.3em;
+            color: #2b5876;
+            font-family: 'Montserrat', Arial, sans-serif;
+        }
+        .hero-content h3 {
+            font-size: 1.5em;
+            color: #4e4376;
+            margin-bottom: 1em;
+            font-family: 'Montserrat', Arial, sans-serif;
+        }
+        .hero-content p {
+            color: #222;
+            line-height: 1.7;
+            margin-bottom: 1.5em;
+            font-size: 1.1em;
+        }
+        .social-links {
+            display: flex;
+            gap: 1.2em;
+            margin-bottom: 1.5em;
+        }
+        .social-links a {
+            color: #2b5876;
+            font-size: 1.7em;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .social-links a:hover {
+            color: #4e4376;
+        }
+        .cv-button {
+            background: linear-gradient(90deg, #e0eafc 0%, #cfdef3 100%);
+            border: none;
+            color: #2b5876;
+            padding: 0.8em 2em;
+            font-size: 1.1em;
+            cursor: pointer;
+            border-radius: 50px;
+            font-family: 'Montserrat', Arial, sans-serif;
+            font-weight: bold;
+            box-shadow: 0 0 12px #cfdef3;
+            transition: background 0.3s, color 0.3s;
+        }
+        .cv-button:hover {
+            background: linear-gradient(90deg, #cfdef3 0%, #e0eafc 100%);
+            color: #4e4376;
+        }
+        .hero-image {
+            position: relative;
+            width: 320px;
+            height: 320px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #e0eafc 0%, #cfdef3 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 32px #cfdef3;
+        }
+        .hero-image img {
+            width: 95%;
+            height: 95%;
+            object-fit: cover;
+            border-radius: 50%;
+            box-shadow: 0 0 24px #e0eafc;
         }
         @media (max-width: 900px) {
             .hero {
                 flex-direction: column;
+                padding: 2em 0;
+            }
+            .hero-content {
+                max-width: 100%;
             }
             .hero-image {
-                width: 140px;
-                height: 140px;
+                width: 220px;
+                height: 220px;
             }
             section {
-                padding: 1em;
+                padding: 1.2em 1em;
             }
         }
     </style>
+    <!-- Three.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/three@0.153.0/build/three.min.js"></script>
 </head>
 <body>
+    <canvas id="bg3d"></canvas>
     <div class="container">
         <nav>
-            <div class="logo">Ankush</div>
+            <div class="logo">Portfolio</div>
             <div class="nav-links">
                 <a href="#home">Home</a>
                 <a href="#education">Education</a>
@@ -197,102 +219,82 @@
         </nav>
         <section class="hero" id="home">
             <div class="hero-content">
-                <h2>Hey there, welcome!</h2>
+                <h2>Hey there, It's Me</h2>
                 <h1>Ankush Desai</h1>
-                <h3>Robotics Engineer & Tech Explorer</h3>
-                <p>I'm Ankush, a robotics enthusiast, coffee-powered coder, and proud owner of a competitive robot army. I love building things that move, think, and occasionally make me laugh. If you're into robots, AI, or just want to see some cool projects, you're in the right place!</p>
+                <h3>And I'm a Robotics Engineer</h3>
+                <p>I'm Ankush 🤖, currently wrangling robots at the University of Minnesota (and occasionally my own coffee machine ☕). I speak fluent Python 🐍, ROS, and sarcasm 😏. I once convinced a robot to deliver paperwork 90% faster—sadly, it still refuses to make me a sandwich 🥪. Ranked 3rd in ABU Robocon 2022 🏆, so my robots are almost as competitive as I am at Mario Kart 🎮. If you love robotic manipulation, autonomous navigation, or just want to geek out about machine learning 🤓, you're in the right place! 🚀</p>
                 <div class="social-links">
                     <a href="https://www.linkedin.com/in/ankush-desai-799a43214/" target="_blank">in</a>
                     <a href="https://github.com/Ankush0903" target="_blank">
                         <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub" style="width: 24px; height: 24px;">
                     </a>
-                    <a href="mailto:desai211@umn.edu" target="_blank">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Gmail_Icon.png" alt="Gmail" style="width: 24px; height: 24px;">
+                    <a href="https://mail.google.com/mail/u/0/#inbox?compose=CllgCJqXPXRMMDxXXHpJPllXvdMTDljCFSWShKJckXgmLdCWgvzxqznKxGBhrWCxmlSPQJKtvjV" target="_blank">
+                        <img src="data:image/jpg;base64,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" alt="Gmail" style="width: 24px; height: 24px;">
                     </a>
                 </div>
                 <a href="Ankush_Satish_Desai_Resume.pdf" target="_blank">
-                    <button class="resume-button">View Resume</button>
+                    <button class="cv-button">View Resume</button>
                 </a>
             </div>
             <div class="hero-image">
                 <img src="Ankush Desai_Profile.png" alt="Ankush Desai Profile Picture">
             </div>
         </section>
-        <section id="education">
-            <h2>Education</h2>
-            <div class="experience">
-                <h3>University of Minnesota (Sept. 2024 - May 2026)</h3>
-                <p>Master of Science in Robotics Technology, GPA: 3.8/4.0</p>
-                <p>Relevant Coursework: Robotics, Computer Vision, Machine Learning, Robot Vision, Linear Control Systems, Deep Learning, Optimal Estimation, Nonlinear Optimization with ML & AI</p>
-            </div>
-            <div class="experience">
-                <h3>Pune University (Aug. 2019 - July 2023)</h3>
-                <p>Bachelor of Engineering in Mechanical Engineering, GPA: 3.4/4.0</p>
-                <p>Relevant Coursework: CAD, Fluid Dynamics, Theory of Machines, Mechanical Design, Strength of Machinery, Thermodynamics</p>
-            </div>
-        </section>
-        <section id="experience">
-            <h2>Experience</h2>
-            <div class="experience">
-                <h3>FAB Electronic Engineers | Automation Engineer Intern (Jul. 2023 - Jul. 2024)</h3>
-                <ul>
-                    <li>Developed an autonomous guided robot using ROS, reducing paperwork delivery time by 90% with 92% accuracy and 98% efficiency.</li>
-                    <p><a href="https://drive.google.com/file/d/1q0ghGxoYfYNuOeyHRbs_HFr0n62tWKpj/view?usp=drive_link" target="_blank" class="view-project">View Project</a></p>
-                    <li>Designed a floor-cleaning robot, cutting cleaning time by 50% through efficient control and user-friendly design.</li>
-                    <p><a href="https://drive.google.com/file/d/1JDKNnDhEOwUiT4b--ivPhqLeEQGq-n6-/view?usp=drive_link" target="_blank" class="view-project">View Project</a></p>
-                    <li>Programmed a UR5 robot in RoboDK using Python API for precise joint and Cartesian movements.</li>
-                    <p><a href="https://drive.google.com/file/d/1Jakvh4HhCY3hcz4OVeEKvQeP5lhhGc0W/view?usp=drive_link" target="_blank" class="view-project">View Project</a></p>
-                </ul>
-            </div>
-            <div class="experience">
-                <h3>Team Automatons | Team Lead (Jun. 2022 - Jun. 2023)</h3>
-                <ul>
-                    <li>Led design and testing of two rugby-playing robots for ABU Robocon 2020, achieving 95% precision in control.</li>
-                    <p><a href="https://drive.google.com/file/d/12uzQ9KXINIyNPeOtPorTw5Aun5p1FWcm/view?usp=sharing" target="_blank" class="view-project">View Project</a></p>
-                    <li>Implemented a CNN-based system for EEG-based robotic arm control with 92% classification accuracy.</li>
-                    <p><a href="https://github.com/Ankush0903/EEG-Based-Classification-of-Hand-Movements" target="_blank" class="view-project">View Project</a></p>
-                    <li>Developed a PyTorch and computer vision system for 3D object localization, improving inventory tracking by 40%.</li>
-                </ul>
-            </div>
-        </section>
-        <section id="projects">
-            <h2>Projects</h2>
-            <div class="project">
-                <h3>Indoor Mapping Using Semantic 3D SLAM in ROS</h3>
-                <p>Developed a semantic 3D SLAM algorithm for TurtleBot 3, achieving 95% accuracy in 3D mapping and localization in GPS-denied environments. Validated in NVIDIA Isaac Sim with 70% improved navigation efficiency.</p>
-                <p><a href="https://github.com/Ankush0903/Indoor-Mapping-Using-Semantic-3D-SLAM-in-ROS" target="_blank" class="view-project">View Project</a></p>
-            </div>
-            <div class="project">
-                <h3>Reinforcement Learning-based Robotic Manipulation</h3>
-                <p>Advanced a robotic pick-and-place system using NVIDIA Isaac Sim and PPO, reducing task completion time by 30% and collision errors by 25%. Used Koopman-based linear model for 40% smoother motions.</p>
-                <p><a href="https://github.com/Ankush0903/Reinforcement-Learning-Based-Robotic-Object-Picking-with-Koopman-Linear-Dynamics" target="_blank" class="view-project">View Project</a></p>
-            </div>
-            <div class="project">
-                <h3>Robotic Pick and Place using a Cobot</h3>
-                <p>Executed precise gripping tasks with a UR5 robot and Robotiq gripper, leveraging pose estimation for adaptive pick-and-place operations.</p>
-                <p><a href="https://github.com/Ankush0903/Robotic-Pick-and-Place-using-a-Cobot" target="_blank" class="view-project">View Project</a></p>
-            </div>
-            <div class="project">
-                <h3>Autonomous Tool Sorting</h3>
-                <p>Built a Python script with TensorFlow, Keras, and OpenCV for UR5 tool sorting using ArUco markers, achieving 95% placement accuracy.</p>
-                <p><a href="https://github.com/Ankush0903/Autonomous-Tool-Sorting" target="_blank" class="view-project">View Project</a></p>
-            </div>
-        </section>
-        <section id="skills">
-            <h2>Skills</h2>
-            <ul>
-                <li>Programming: Python, PyTorch, C, C++, TensorFlow, MATLAB, ROS, Docker</li>
-                <li>Robotics: Computer Vision, Machine Learning, Deep Learning, Reinforcement Learning, SLAM, Path Planning, Linear Feedback Control</li>
-                <li>Design: SolidWorks, Fusion 360, Catia, AutoCAD, ANSYS, Shapr 3D, Rapid Prototyping</li>
-                <li>Electronics: Electrical Schematics, Electronic Debugging, Sensor Integration</li>
-            </ul>
-        </section>
-        <section id="contact">
-            <h2>Contact</h2>
-            <p class="contact-links">Email: <a href="mailto:desai211@umn.edu">desai211@umn.edu</a></p>
-            <p class="contact-links">LinkedIn: <a href="https://www.linkedin.com/in/ankush-desai-799a43214/" target="_blank">LinkedIn Profile</a></p>
-            <p>Phone: +1(763)900-5084</p>
-        </section>
+        <!-- ...existing sections... -->
     </div>
+    <script>
+        // Three.js 3D floating sphere background
+        const canvas = document.getElementById('bg3d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        const renderer = new THREE.WebGLRenderer({ canvas, alpha: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
+        camera.position.z = 6;
+
+        const ambientLight = new THREE.AmbientLight(0xffffff, 0.7);
+        scene.add(ambientLight);
+        const pointLight = new THREE.PointLight(0x2b5876, 1, 100);
+        pointLight.position.set(10, 10, 10);
+        scene.add(pointLight);
+
+        // Sphere geometry with cool material
+        const geometry = new THREE.SphereGeometry(2.5, 64, 64);
+        const material = new THREE.MeshPhysicalMaterial({
+            color: 0x2b5876,
+            metalness: 0.7,
+            roughness: 0.2,
+            clearcoat: 1,
+            clearcoatRoughness: 0.1,
+            reflectivity: 1,
+            transmission: 0.5,
+            opacity: 0.8,
+            transparent: true,
+            sheen: 1,
+            sheenColor: new THREE.Color(0xcfdef3)
+        });
+        const sphere = new THREE.Mesh(geometry, material);
+        scene.add(sphere);
+
+        // Animate sphere
+        function animate() {
+            requestAnimationFrame(animate);
+            sphere.rotation.y += 0.003;
+            sphere.rotation.x += 0.001;
+            renderer.render(scene, camera);
+        }
+        animate();
+
+        // Responsive canvas
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+        });
+    </script>
 </body>
 </html>
