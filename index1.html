@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ankush Desai - Robotics Portfolio</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%A4%96%3C/text%3E%3C/svg%3E">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Roboto:wght@400;500&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; }
+
+        body {
+            background:
+                radial-gradient(circle at 15% 10%, rgba(34,211,238,0.14) 0%, transparent 40%),
+                radial-gradient(circle at 85% 90%, rgba(168,85,247,0.14) 0%, transparent 40%),
+                linear-gradient(135deg, #060b16 0%, #0b1424 50%, #0a1120 100%);
+            background-attachment: fixed;
+            min-height: 100vh;
+            font-family: 'Roboto', Arial, sans-serif;
+            color: #cbd5e1;
+            position: relative;
+            margin: 0;
+        }
+
+        /* Circuit-board grid overlay */
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.5;
+            background-image:
+                linear-gradient(rgba(34,211,238,0.08) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(34,211,238,0.08) 1px, transparent 1px);
+            background-size: 42px 42px;
+        }
+
+        /* Top boot-bar */
+        .boot-bar {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            z-index: 1000;
+            background: linear-gradient(90deg, #22d3ee, #a855f7, #22d3ee);
+            background-size: 200% 100%;
+            animation: bootScan 3s linear infinite;
+        }
+        @keyframes bootScan {
+            0% { background-position: 0% 0; }
+            100% { background-position: 200% 0; }
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 2em auto;
+            padding: 2em;
+            border-radius: 32px;
+            background: rgba(13,20,36,0.78);
+            box-shadow: 0 8px 40px 0 rgba(0,0,0,0.45), 0 0 60px rgba(34,211,238,0.06);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(34,211,238,0.18);
+            position: relative;
+            z-index: 1;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2em;
+            flex-wrap: wrap;
+            gap: 1em;
+        }
+        .logo {
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 700;
+            font-size: 1.4em;
+            color: #22d3ee;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 0.5em;
+            text-shadow: 0 0 12px rgba(34,211,238,0.35);
+        }
+        .logo .status-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #39ff88;
+            box-shadow: 0 0 8px #39ff88;
+            animation: blink-dot 1.6s ease-in-out infinite;
+            flex-shrink: 0;
+        }
+        @keyframes blink-dot {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.35; }
+        }
+        .logo .tag {
+            font-size: 0.6em;
+            color: #c084fc;
+            border: 1px solid #a855f755;
+            border-radius: 6px;
+            padding: 0.15em 0.5em;
+            background: rgba(168,85,247,0.08);
+        }
+        .nav-links a {
+            color: #67e8f9;
+            text-decoration: none;
+            margin: 0 0.6em;
+            font-weight: 500;
+            font-size: 0.95em;
+            font-family: 'JetBrains Mono', monospace;
+            transition: color 0.2s, border-color 0.2s;
+            border-bottom: 2px solid transparent;
+            padding-bottom: 2px;
+        }
+        .nav-links a::before { content: "["; color: #a855f788; }
+        .nav-links a::after { content: "]"; color: #a855f788; }
+        .nav-links a:hover {
+            color: #c084fc;
+            border-bottom: 2px solid #c084fc;
+        }
+
+        .hero {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 2em;
+            margin-bottom: 2em;
+        }
+        .hero-content {
+            flex: 1 1 350px;
+        }
+        .hero-content h2 {
+            color: #c084fc;
+            font-size: 1.3em;
+            margin-bottom: 0.5em;
+            font-family: 'Montserrat', Arial, sans-serif;
+        }
+        .hero-content h1 {
+            font-size: 2.8em;
+            color: #22d3ee;
+            margin-bottom: 0.3em;
+            font-family: 'Montserrat', Arial, sans-serif;
+            text-shadow: 0 0 18px rgba(34,211,238,0.25);
+        }
+        .hero-content h3 {
+            font-size: 1.3em;
+            color: #67e8f9;
+            margin-bottom: 1em;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 500;
+        }
+        .hero-content h3 .cursor {
+            display: inline-block;
+            width: 0.55em;
+            height: 1em;
+            background: #c084fc;
+            margin-left: 4px;
+            vertical-align: middle;
+            animation: blink-cursor 1s steps(1) infinite;
+        }
+        @keyframes blink-cursor {
+            0%, 49% { opacity: 1; }
+            50%, 100% { opacity: 0; }
+        }
+        .hero-content p {
+            color: #cbd5e1;
+            line-height: 1.7;
+            margin-bottom: 1.5em;
+            font-size: 1.08em;
+            background: rgba(34,211,238,0.06);
+            border-radius: 12px;
+            padding: 1em;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            border-left: 3px solid #22d3ee;
+        }
+        .stat-strip {
+            display: flex;
+            gap: 0.8em;
+            flex-wrap: wrap;
+            margin-bottom: 1.5em;
+        }
+        .stat-chip {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.82em;
+            color: #67e8f9;
+            background: rgba(34,211,238,0.08);
+            border: 1px solid rgba(34,211,238,0.35);
+            border-radius: 8px;
+            padding: 0.4em 0.8em;
+            transition: box-shadow 0.2s, transform 0.2s;
+        }
+        .stat-chip:hover {
+            box-shadow: 0 0 10px rgba(34,211,238,0.4);
+            transform: translateY(-2px);
+        }
+        .stat-chip b { color: #c084fc; }
+
+        .social-links {
+            display: flex;
+            gap: 0.9em;
+            margin-bottom: 1.5em;
+            align-items: center;
+        }
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 38px;
+            height: 38px;
+            border-radius: 10px;
+            background: rgba(34,211,238,0.08);
+            border: 1px solid rgba(34,211,238,0.3);
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+        .social-links a:hover {
+            border-color: #c084fc;
+            box-shadow: 0 0 14px rgba(168,85,247,0.45);
+            transform: translateY(-2px);
+        }
+        .social-links img, .social-links svg {
+            width: 20px;
+            height: 20px;
+        }
+        .cv-button {
+            background: linear-gradient(90deg, #22d3ee 0%, #a855f7 100%);
+            border: none;
+            color: #06111f;
+            padding: 0.8em 2em;
+            font-size: 1.05em;
+            cursor: pointer;
+            border-radius: 50px;
+            font-family: 'Montserrat', Arial, sans-serif;
+            font-weight: bold;
+            box-shadow: 0 0 16px rgba(34,211,238,0.35);
+            transition: box-shadow 0.3s, transform 0.2s;
+        }
+        .cv-button:hover {
+            box-shadow: 0 0 26px rgba(168,85,247,0.55);
+            transform: translateY(-2px);
+        }
+
+        /* HUD-framed profile photo with radar sweep */
+        .hero-image-wrap {
+            position: relative;
+            flex: 0 0 280px;
+            width: 280px;
+            height: 280px;
+        }
+        .hero-image-wrap .ring {
+            position: absolute;
+            inset: -14px;
+            border-radius: 50%;
+            border: 2px dashed rgba(34,211,238,0.55);
+            animation: spin-ring 14s linear infinite;
+        }
+        .hero-image-wrap .ring2 {
+            position: absolute;
+            inset: -28px;
+            border-radius: 50%;
+            border: 1px solid rgba(168,85,247,0.35);
+        }
+        @keyframes spin-ring {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .hero-image {
+            position: relative;
+            width: 280px;
+            height: 280px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 50% 40%, rgba(34,211,238,0.18) 0%, rgba(10,17,32,0.4) 70%);
+            box-shadow: inset 0 0 40px rgba(34,211,238,0.15), 0 0 32px rgba(34,211,238,0.2);
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .hero-image img {
+            width: 96%;
+            height: 96%;
+            object-fit: contain;
+            object-position: bottom;
+            filter: drop-shadow(0 0 18px rgba(34,211,238,0.35));
+        }
+        /* corner HUD brackets */
+        .corner {
+            position: absolute;
+            width: 22px;
+            height: 22px;
+            border: 3px solid #c084fc;
+            opacity: 0.9;
+            z-index: 3;
+        }
+        .corner.tl { top: -10px; left: -10px; border-right: none; border-bottom: none; }
+        .corner.tr { top: -10px; right: -10px; border-left: none; border-bottom: none; }
+        .corner.bl { bottom: -10px; left: -10px; border-right: none; border-top: none; }
+        .corner.br { bottom: -10px; right: -10px; border-left: none; border-top: none; }
+
+        .float-chip {
+            position: absolute;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.72em;
+            color: #06111f;
+            background: #67e8f9;
+            padding: 0.25em 0.6em;
+            border-radius: 6px;
+            box-shadow: 0 0 10px rgba(34,211,238,0.5);
+            animation: float-chip 4s ease-in-out infinite;
+            z-index: 2;
+            font-weight: 600;
+        }
+        .float-chip.c1 { top: 8%; left: -18%; animation-delay: 0s; }
+        .float-chip.c2 { bottom: 12%; right: -20%; animation-delay: 1.3s; }
+        .float-chip.c3 { top: 55%; left: -24%; animation-delay: 2.6s; }
+        @keyframes float-chip {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
+        /* Section styling with terminal header */
+        section {
+            margin-bottom: 2em;
+            padding: 2em;
+            border-radius: 24px;
+            background: rgba(17,25,43,0.65);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.25);
+            position: relative;
+            border: 1px solid rgba(34,211,238,0.12);
+        }
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 0.6em;
+            margin-bottom: 1em;
+        }
+        .section-header .icon {
+            width: 30px;
+            height: 30px;
+            color: #22d3ee;
+            flex-shrink: 0;
+            filter: drop-shadow(0 0 6px rgba(34,211,238,0.4));
+        }
+        section h2 {
+            color: #67e8f9;
+            font-size: 1.7em;
+            margin: 0;
+            font-family: 'Montserrat', Arial, sans-serif;
+        }
+        .circuit-line {
+            height: 14px;
+            margin-bottom: 1.5em;
+            background:
+                linear-gradient(90deg, rgba(34,211,238,0.5), rgba(168,85,247,0.5)) no-repeat center / 100% 1px;
+            position: relative;
+        }
+        .circuit-line::after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: 8px; height: 8px;
+            border-radius: 50%;
+            background: #c084fc;
+            box-shadow: 0 0 8px #c084fc;
+            transform: translate(-50%, -50%);
+        }
+
+        section p, section li {
+            color: #cbd5e1;
+            line-height: 1.7;
+            margin-bottom: 0.5em;
+            font-size: 1.02em;
+        }
+        ul {
+            list-style-type: none;
+            margin-left: 0;
+            padding-left: 0;
+        }
+        section ul li {
+            position: relative;
+            padding-left: 1.6em;
+            margin-bottom: 0.6em;
+        }
+        section ul li::before {
+            content: "▹";
+            position: absolute;
+            left: 0;
+            color: #c084fc;
+            font-weight: bold;
+        }
+
+        .experience, .project {
+            margin-bottom: 1.5em;
+            padding: 1.2em 1.4em;
+            border-left: 3px solid #22d3ee;
+            border-radius: 0 14px 14px 0;
+            background: rgba(34,211,238,0.04);
+            transition: box-shadow 0.25s, transform 0.25s, border-color 0.25s;
+        }
+        .experience:hover, .project:hover {
+            box-shadow: 0 4px 22px rgba(168,85,247,0.2);
+            transform: translateX(4px);
+            border-left-color: #c084fc;
+        }
+        .experience h3, .project h3 {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.02em;
+            color: #e2e8f0;
+            margin-bottom: 0.4em;
+        }
+        .role-tag {
+            display: inline-block;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7em;
+            color: #67e8f9;
+            background: rgba(34,211,238,0.1);
+            border: 1px solid rgba(34,211,238,0.35);
+            border-radius: 6px;
+            padding: 0.15em 0.55em;
+            margin-left: 0.5em;
+            vertical-align: middle;
+        }
+        .project h3 .stack {
+            display: block;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.68em;
+            color: #c084fc;
+            font-weight: normal;
+            margin-top: 0.3em;
+        }
+
+        .contact-links {
+            display: flex;
+            align-items: center;
+            gap: 0.7em;
+        }
+        .contact-links .c-icon {
+            width: 22px;
+            height: 22px;
+            color: #22d3ee;
+            flex-shrink: 0;
+        }
+        .contact-links a {
+            color: #67e8f9;
+            text-decoration: none;
+            font-family: 'JetBrains Mono', monospace;
+        }
+        .contact-links a:hover {
+            color: #c084fc;
+        }
+        .view-project {
+            color: #c084fc;
+            text-decoration: none;
+            font-weight: bold;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.92em;
+            transition: color 0.2s;
+        }
+        .view-project::before { content: "↳ "; }
+        .view-project:hover {
+            color: #22d3ee;
+        }
+
+        /* Skills as circuit chips */
+        .skill-group {
+            margin-bottom: 1.3em;
+        }
+        .skill-group h4 {
+            font-family: 'JetBrains Mono', monospace;
+            color: #c084fc;
+            font-size: 0.95em;
+            margin: 0 0 0.7em 0;
+            letter-spacing: 0.5px;
+        }
+        .skill-group h4::before { content: "// "; color: #22d3ee99; }
+        .chip-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6em;
+        }
+        .chip {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85em;
+            color: #dbeafe;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(34,211,238,0.3);
+            border-radius: 8px;
+            padding: 0.4em 0.75em;
+            display: flex;
+            align-items: center;
+            gap: 0.4em;
+            transition: box-shadow 0.2s, transform 0.2s, border-color 0.2s;
+        }
+        .chip::before {
+            content: "";
+            width: 6px; height: 6px;
+            border-radius: 50%;
+            background: #39ff88;
+            box-shadow: 0 0 6px #39ff88;
+            flex-shrink: 0;
+        }
+        .chip:hover {
+            border-color: #c084fc;
+            box-shadow: 0 0 10px rgba(168,85,247,0.4);
+            transform: translateY(-2px);
+        }
+
+        /* Contact status footer */
+        .status-line {
+            display: flex;
+            align-items: center;
+            gap: 0.5em;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85em;
+            color: #39ff88;
+            margin-top: 1em;
+            padding-top: 1em;
+            border-top: 1px dashed rgba(34,211,238,0.25);
+        }
+        .status-line .status-dot {
+            width: 8px; height: 8px;
+            border-radius: 50%;
+            background: #39ff88;
+            box-shadow: 0 0 6px #39ff88;
+            animation: blink-dot 1.6s ease-in-out infinite;
+        }
+
+        @media (max-width: 900px) {
+            .hero {
+                flex-direction: column;
+                padding: 2em 0;
+            }
+            .hero-content {
+                max-width: 100%;
+            }
+            .hero-image-wrap {
+                width: 180px;
+                height: 180px;
+            }
+            .hero-image { width: 180px; height: 180px; }
+            .ring { inset: -10px; }
+            .ring2 { inset: -20px; }
+            .float-chip { display: none; }
+            section {
+                padding: 1.2em 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="boot-bar"></div>
+    <div class="container">
+        <nav>
+            <div class="logo"><span class="status-dot"></span>A.DESAI <span class="tag">ROBOTICS.SYS</span></div>
+            <div class="nav-links">
+                <a href="#home">Home</a>
+                <a href="#education">Education</a>
+                <a href="#experience">Experience</a>
+                <a href="#projects">Projects</a>
+                <a href="#skills">Skills</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </nav>
+        <section class="hero" id="home">
+            <div class="hero-content">
+                <h2>Hey there, It's Me</h2>
+                <h1>Ankush Desai</h1>
+                <h3>And I'm a Robotics Engineer<span class="cursor"></span></h3>
+                <p>Update: I've temporarily swapped my University of Minnesota badge for a Pacific Northwest National Laboratory one. I'm currently a Robotics Research Intern at PNNL, teaching a UR7e arm to handle test tubes without starting a chemistry fire 🧪🤖, while my mobile robot maps entire lab facilities faster than I can find my own car keys. I speak fluent ROS2, Python, and sarcasm 😏. All India Rank 3 in ABU Robocon 2022 (Rank 4 in 2021 & 2020), so my robots are almost as competitive as I am at Mario Kart. If you love SLAM, VLA models, or just want to geek out about robots that (mostly) follow instructions, you're in the right place! 🚀</p>
+                <div class="stat-strip">
+                    <div class="stat-chip"><b>10+</b> Robotics Projects</div>
+                    <div class="stat-chip"><b>ROS/ROS2</b> · <b>VLA</b> · <b>SLAM</b></div>
+                    <div class="stat-chip"><b>GPA</b> 3.81/4.0</div>
+                </div>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/ankush-desai-799a43214/" target="_blank" aria-label="LinkedIn">
+                        <svg viewBox="0 0 24 24" fill="#0A66C2"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                    </a>
+                    <a href="https://github.com/Ankush0903" target="_blank" aria-label="GitHub">
+                        <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub">
+                    </a>
+                    <a href="https://mail.google.com/mail/u/0/?tab=rm&ogbl#inbox?compose=CllgCJvrcCnTHNgzXlsPRfjjmzrXnZqxXgJRsNPMwvldZRdSXjVSstFJXTjhcWXvBvjLVksgFHL" target="_blank" aria-label="Gmail">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Gmail_Icon.png" alt="Gmail">
+                    </a>
+                </div>
+                <a href="Ankush_Satish_Desai_Resume.pdf" target="_blank">
+                    <button class="cv-button">View Resume</button>
+                </a>
+            </div>
+            <div class="hero-image-wrap">
+                <div class="ring2"></div>
+                <div class="ring"></div>
+                <div class="hero-image">
+                    <span class="corner tl"></span>
+                    <span class="corner tr"></span>
+                    <span class="corner bl"></span>
+                    <span class="corner br"></span>
+                    <img src="Ankush Desai_Profile.png" alt="Ankush Desai Profile Picture">
+                </div>
+                <div class="float-chip c1">ROS2</div>
+                <div class="float-chip c2">SLAM</div>
+                <div class="float-chip c3">Python</div>
+            </div>
+        </section>
+
+        <section id="education">
+            <div class="section-header">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10L12 5 2 10l10 5 10-5z"/><path d="M6 12v5c0 1.5 3 3 6 3s6-1.5 6-3v-5"/><path d="M22 10v6"/></svg>
+                <h2>Education</h2>
+            </div>
+            <div class="circuit-line"></div>
+            <div class="experience">
+                <h3>University of Minnesota <span class="role-tag">Sept. 2024 – Dec. 2026</span></h3>
+                <p>Master of Science in Robotics Technology, GPA: 3.81/4.0</p>
+                <p>Relevant Coursework: Robotics, Computer Vision, Machine Learning, Robot Vision, Linear Control Systems, Deep Learning, Optimal Estimation, Nonlinear Optimization with ML & AI</p>
+            </div>
+            <div class="experience">
+                <h3>Pune University <span class="role-tag">Aug. 2019 – Jul. 2023</span></h3>
+                <p>Bachelor of Engineering in Mechanical Engineering, GPA: 3.4/4.0</p>
+                <p>Relevant Coursework: CAD, Fluid Dynamics, Theory of Machines, Mechanical Design, Strength of Machinery, Thermodynamics</p>
+            </div>
+        </section>
+
+        <section id="experience">
+            <div class="section-header">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><path d="M3 13h18"/><path d="M12 13v3"/></svg>
+                <h2>Experience</h2>
+            </div>
+            <div class="circuit-line"></div>
+            <div class="experience">
+                <h3>Pacific Northwest National Laboratory (PNNL) <span class="role-tag">Robotics Research Intern · Jul. 2026 – Nov. 2026</span></h3>
+                <ul>
+                    <li>Conducted frontier exploration to autonomously map an entire lab facility using an Orbbec RGB-D camera, generating dense 3D point clouds with ROS2, Nav2, and SLAM for real-time environment reconstruction and navigation.</li>
+                    <li>Applied Vision-Language-Action (VLA) models on a UR7e arm with a tactile-sensing Robotiq gripper for lab semantic understanding and chemical handling tasks, planning trajectories via MoveIt and integrating with autonomous navigation.</li>
+                    <li>Implemented TagSLAM for AprilTag-based localization to support GPS-denied lab navigation, troubleshooting issues across the mapping, manipulation, and localization systems.</li>
+                </ul>
+            </div>
+            <div class="experience">
+                <h3>FAB Electronic Engineers <span class="role-tag">Automation Engineer Intern · Jul. 2023 – Jul. 2024</span></h3>
+                <ul>
+                    <li>Developed an autonomous guided robot using ROS for navigation and obstacle avoidance, reducing paperwork delivery time by 90% with 92% accuracy and 98% efficiency.</li>
+                    <p><a href="https://drive.google.com/file/d/1q0ghGxoYfYNuOeyHRbs_HFr0n62tWKpj/view?usp=drive_link" target="_blank" class="view-project">View Project</a></p>
+                    <li>Designed and manufactured a floor-cleaning robot with sweeping and mopping capabilities, cutting cleaning time by 50% through efficient control using a DPDT switchboard.</li>
+                    <p><a href="https://drive.google.com/file/d/1JDKNnDhEOwUiT4b--ivPhqLeEQGq-n6-/view?usp=drive_link" target="_blank" class="view-project">View Project</a></p>
+                    <li>Programmed a UR5 robot in RoboDK using Python API for precise joint and Cartesian movements.</li>
+                    <p><a href="https://drive.google.com/file/d/1Jakvh4HhCY3hcz4OVeEKvQeP5lhhGc0W/view?usp=drive_link" target="_blank" class="view-project">View Project</a></p>
+                </ul>
+            </div>
+            <div class="experience">
+                <h3>Team Automatons <span class="role-tag">Team Lead · Jun. 2022 – Jun. 2023</span></h3>
+                <ul>
+                    <li>Designed, manufactured, and tested two rugby-playing robots with 95% precision in control and coordination for ABU Robocon 2020, utilizing ROS, computer vision, and embedded systems.</li>
+                    <p><a href="https://drive.google.com/file/d/12uzQ9KXINIyNPeOtPorTw5Aun5p1FWcm/view?usp=sharing" target="_blank" class="view-project">View Project</a></p>
+                    <li>Applied a CNN-based system to classify hand movements using EEG data with 92% accuracy, enabling robotic arm control at 83% efficiency.</li>
+                    <p><a href="https://github.com/Ankush0903/EEG-Based-Classification-of-Hand-Movements" target="_blank" class="view-project">View Project</a></p>
+                </ul>
+            </div>
+        </section>
+
+        <section id="projects">
+            <div class="section-header">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="7" width="10" height="10" rx="1"/><path d="M9 1v4M15 1v4M9 19v4M15 19v4M1 9h4M1 15h4M19 9h4M19 15h4"/></svg>
+                <h2>Projects</h2>
+            </div>
+            <div class="circuit-line"></div>
+            <div class="project">
+                <h3>Indoor Mapping Using Semantic 3D SLAM in ROS<span class="stack">ROS · Semantic Segmentation · Visual-SLAM · 3D Mapping</span></h3>
+                <p>Built a semantic 3D SLAM algorithm for autonomous indoor navigation of TurtleBot 3 in GPS-denied environments, achieving 95%+ mapping/localization accuracy and a 70% improvement in navigation efficiency, validated in NVIDIA Isaac Sim with dynamic obstacle avoidance and adaptive behavior modes.</p>
+                <p><a href="https://github.com/Ankush0903/Indoor-Mapping-Using-Semantic-3D-SLAM-in-ROS" target="_blank" class="view-project">View Project</a></p>
+            </div>
+            <div class="project">
+                <h3>Reinforcement Learning-based Robotic Manipulation with Koopman Generator<span class="stack">Reinforcement Learning · ROS · NVIDIA Isaac Sim</span></h3>
+                <p>Built a PPO-based robotic pick-and-place system, achieving 30% faster task completion and 25% fewer collisions. Applied a Koopman-based linear model to simplify nonlinear robot dynamics, enabling smoother arm motion with a 40% reduction in erratic movements.</p>
+                <p><a href="https://github.com/Ankush0903/Reinforcement-Learning-Based-Robotic-Object-Picking-with-Koopman-Linear-Dynamics" target="_blank" class="view-project">View Project</a></p>
+            </div>
+            <div class="project">
+                <h3>Robotic Pick and Place using a Cobot<span class="stack">UR5 · Robotiq Gripper · Pose Estimation</span></h3>
+                <p>Executed precise gripping tasks with a UR5 robot and Robotiq gripper, leveraging pose estimation for adaptive pick-and-place operations.</p>
+                <p><a href="https://github.com/Ankush0903/Robotic-Pick-and-Place-using-a-Cobot" target="_blank" class="view-project">View Project</a></p>
+            </div>
+            <div class="project">
+                <h3>Autonomous Agricultural Rover for Weed Elimination<span class="stack">Python · ROS · Homogeneous Transformations · ML · NLP</span></h3>
+                <p>Implemented a hybrid YOLOv7/VLM framework to identify 12 weed species with 95% accuracy for CO2-laser thermal ablation, and deployed a ROS-based path planning algorithm achieving 92% collision avoidance during in-field navigation.</p>
+            </div>
+            <div class="project">
+                <h3>Autonomous Tool Sorting using a Computer Vision Algorithm<span class="stack">Computer Vision · ArUco Markers · CNN · ML</span></h3>
+                <p>Built a TensorFlow/Keras/OpenCV pipeline to control a UR5 robot for ArUco-marker-based tool identification and placement, achieving a 95% success rate that adapts to real-time position changes with 90% success under dynamic conditions.</p>
+                <p><a href="https://github.com/Ankush0903/Autonomous-Tool-Sorting" target="_blank" class="view-project">View Project</a></p>
+            </div>
+        </section>
+
+        <section id="skills">
+            <div class="section-header">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
+                <h2>Skills</h2>
+            </div>
+            <div class="circuit-line"></div>
+            <div class="skill-group">
+                <h4>Programming & Tools</h4>
+                <div class="chip-row">
+                    <div class="chip">Python</div><div class="chip">PyTorch</div><div class="chip">C</div><div class="chip">C++</div>
+                    <div class="chip">TensorFlow</div><div class="chip">MATLAB</div><div class="chip">ROS/ROS2</div>
+                    <div class="chip">Nav2</div><div class="chip">MoveIt</div><div class="chip">Docker</div>
+                    <div class="chip">Git</div><div class="chip">Linux</div><div class="chip">Claude Code</div>
+                </div>
+            </div>
+            <div class="skill-group">
+                <h4>Robotics & AI</h4>
+                <div class="chip-row">
+                    <div class="chip">Computer Vision</div><div class="chip">Machine Learning</div><div class="chip">Deep Learning</div>
+                    <div class="chip">Reinforcement Learning</div><div class="chip">LLMs</div><div class="chip">VLM</div>
+                    <div class="chip">VLA Models</div><div class="chip">Robot Manipulation</div><div class="chip">SLAM</div>
+                    <div class="chip">TagSLAM</div><div class="chip">AprilTag Localization</div><div class="chip">Path Planning</div>
+                    <div class="chip">Linear Feedback Control</div>
+                </div>
+            </div>
+            <div class="skill-group">
+                <h4>Hardware</h4>
+                <div class="chip-row">
+                    <div class="chip">UR5 / UR7e Arms</div><div class="chip">Robotiq Grippers (Tactile)</div>
+                    <div class="chip">Orbbec RGB-D Cameras</div><div class="chip">Point Cloud Processing</div>
+                    <div class="chip">Electrical Schematics</div><div class="chip">Electronic Debugging</div>
+                    <div class="chip">Sensor Integration</div>
+                </div>
+            </div>
+            <div class="skill-group">
+                <h4>Design</h4>
+                <div class="chip-row">
+                    <div class="chip">SolidWorks</div><div class="chip">Fusion 360</div><div class="chip">Catia</div>
+                    <div class="chip">AutoCAD</div><div class="chip">ANSYS</div><div class="chip">Shapr 3D</div>
+                    <div class="chip">Rapid Prototyping</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <div class="section-header">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11a9 9 0 0 1 9 9"/><path d="M4 4a16 16 0 0 1 16 16"/><circle cx="5" cy="19" r="1"/></svg>
+                <h2>Contact</h2>
+            </div>
+            <div class="circuit-line"></div>
+            <p class="contact-links">
+                <svg class="c-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 6l-10 7L2 6"/></svg>
+                <a href="https://mail.google.com/mail/u/0/?tab=rm&ogbl#inbox?compose=CllgCJvrcCnTHNgzXlsPRfjjmzrXnZqxXgJRsNPMwvldZRdSXjVSstFJXTjhcWXvBvjLVksgFHL" target="_blank">desai211@umn.edu</a>
+            </p>
+            <p class="contact-links">
+                <svg class="c-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                <a href="tel:+17639005084">+1 (763) 900-5084</a>
+            </p>
+            <p class="contact-links">
+                <svg class="c-icon" viewBox="0 0 24 24" fill="currentColor" style="color:#0A66C2"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                <a href="https://www.linkedin.com/in/ankush-desai-799a43214/" target="_blank">linkedin.com/in/ankush-desai</a>
+            </p>
+            <div class="status-line"><span class="status-dot"></span> SYSTEM STATUS: OPEN TO ROBOTICS, PERCEPTION & MANIPULATION ROLES</div>
+        </section>
+    </div>
+</body>
+</html>
